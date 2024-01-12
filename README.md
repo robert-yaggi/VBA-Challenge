@@ -89,7 +89,28 @@ Next i
  Next i
  
  '% Increase, % Decrease, Greatest Total Volume Calculation
- 'could not get this to run without errors
+For i = 2 To lastrow_summary
 
+'Greatest % Increase Calculation and Formatting
+    If Cells(i, 11).Value = WorksheetFunction.Max(Range("K2:K" & lastrow_summary)) Then
+        Cells(2, 16).Value = Cells(i, 9).Value
+        Cells(2, 17).Value = Cells(i, 11).Value
+        Cells(2, 17).NumberFormat = "0.00%"
+
+'Greatest % Decrease Calculation and Formatting
+    ElseIf Cells(i, 11).Value = WorksheetFunction.Min(Range("K2:K" & lastrow_summary)) Then
+        Cells(3, 16).Value = Cells(i, 9).Value
+        Cells(3, 17).Value = Cells(i, 11).Value
+        Cells(3, 17).NumberFormat = "0.00%"
+
+'Greatest Total Volume Calculation
+    ElseIf Cells(i, 12).Value = WorksheetFunction.Max(Range("L2:L" & lastrow_summary)) Then
+        Cells(4, 16).Value = Cells(i, 9).Value
+        Cells(4, 17).Value = Cells(i, 12).Value
+        
+    End If
+Next i
+
+    
 
 End Sub
